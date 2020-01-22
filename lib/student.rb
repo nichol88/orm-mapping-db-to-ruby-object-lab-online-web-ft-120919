@@ -1,6 +1,15 @@
 class Student
   attr_accessor :id, :name, :grade
 
+  def self.all_students_in_grade_X(x)
+    sql = <<-SQL
+    SELECT * FROM students WHERE grade = 9
+    SQL
+    DB[:conn].execute(sql).map{|row|
+      self.new_from_db(row)
+    }
+  end
+
   def self.first_student_in_grade_10
     sql = <<-SQL
     SELECT * FROM students WHERE grade = 10 ORDER BY id ASC LIMIT 1
