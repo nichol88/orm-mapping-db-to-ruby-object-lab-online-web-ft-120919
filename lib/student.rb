@@ -27,8 +27,7 @@ class Student
     SELECT * FROM students WHERE name = ? LIMIT 1
     SQL
 
-    row = DB[:conn].execute(sql, name)
-    binding.pry
+    rows_array = DB[:conn].execute(sql, name)
     self.new_from_db(row)
   end
 
