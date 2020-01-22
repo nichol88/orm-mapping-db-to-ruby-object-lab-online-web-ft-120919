@@ -26,7 +26,9 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE name = ?
     SQL
-    DB[:conn].execute(sql, name)
+    row = DB[:conn].execute(sql, name)
+
+    self.new_from_db(row)
   end
 
   def save
