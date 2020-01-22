@@ -5,7 +5,7 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE grade = 10 ORDER BY name ASC LIMIT 1
     SQL
-    DB[:conn].execute(sql, x).map{|row| self.new_from_db(row)}.first
+    DB[:conn].execute(sql).map{|row| self.new_from_db(row)}.first
   end
 
   def self.first_X_students_in_grade_10(x)
