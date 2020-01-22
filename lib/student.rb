@@ -1,6 +1,12 @@
 class Student
   attr_accessor :id, :name, :grade
 
+  def all_students_in_grade_9
+    sql = <<-SQL
+    SELECT * FROM students WHERE grade = 9
+    SQL
+  end
+
   def self.new_from_db(row)
     s = self.new
     s.id = row[0]
