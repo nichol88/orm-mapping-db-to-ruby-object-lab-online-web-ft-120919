@@ -2,7 +2,9 @@ class Student
   attr_accessor :id, :name, :grade
 
   def self.all_but_12th
-
+    sql = <<-SQL
+    SELECT * FROM students WHERE grade < 12
+    SQL
   end
 
   def self.all_students_in_grade_9
